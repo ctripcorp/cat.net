@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<doc>
+  <domain id="123456" ip="" enabled="true" />
+  <logEnabled enabled="true" />
+  <servers>
+    <!--server ip="127.0.0.1" port="2280" /-->
+    <!--server ip="192.168.83.100" port="2280" /-->
+    <server ip="10.2.6.98" port="2280" />
+    <server ip="10.2.6.99" port="2280" />
+  </servers>
+</doc>
