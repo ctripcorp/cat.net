@@ -12,4 +12,4 @@ CAT.net客户端要求**.NET Framework 4.0或更高版本**。
 2. `CatClientTest`：示例程序和测试用例。
 
 单击Rebuild Solution编译这两个工程：
-
+![Rebuild Solution](doc/rebuild-solution.png)
