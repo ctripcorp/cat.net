@@ -115,7 +115,7 @@ namespace ConsoleApplication1
 ![Application Log File Path](doc/console-app-log-file-path.png)
 
 ### 为心跳报表获取.NET性能数据
-![Heartbeat Report](doc/heartbeat-output.png.png)
+![Heartbeat Report](doc/heartbeat-output.png)
 如上图，CAT.net客户端每分钟会自动抓取一次机器性能数据，展现在Heartbeat报表中，包括CPU利用率、GC次数、Heap各代大小、锁竞争次数、锁请求队列大小等。
 
 这些性能指标中的一部分，是通过读取.NET Performance Counter实现的。
