@@ -1,7 +1,7 @@
 # CAT.net客户端
 为.net应用提供接入CAT的API。
 
-CAT.net客户端的API设计、客户端配置方式，与CAT Java客户端基本一致。
+CAT.net客户端的API设计、客户端配置方式，与[CAT Java客户端](https://github.com/dianping/cat)基本一致。
 
 ### 编译工程
 CAT.net客户端要求**.NET Framework 4.0或更高版本**。
