@@ -41,6 +41,7 @@ CAT.net客户端要求**_.NET Framework 4.0或更高版本_**。
 1. 设置CatClientTest工程为默认启动工程：
 
 ![Set CatClientTest to be Startup Project](doc/set-startup-project.png)
+
 2. 单击执行，就会运行`CatClientTest`中的`Program.cs`的`Main()`方法。
 ![Run CatClientTest](doc/run-cat-client-test.png)
 
