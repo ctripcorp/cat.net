@@ -38,28 +38,28 @@ CAT.net客户端要求**_.NET Framework 4.0或更高版本_**。
 ```
 
 ### 执行工程自带的测试用例
-1. 设置CatClientTest工程为默认启动工程：
+- 设置CatClientTest工程为默认启动工程：
 
 ![Set CatClientTest to be Startup Project](doc/set-startup-project.png)
 
-2. 单击执行，就会运行`CatClientTest`中的`Program.cs`的`Main()`方法。
+- 单击执行，就会运行`CatClientTest`中的`Program.cs`的`Main()`方法。
 ![Run CatClientTest](doc/run-cat-client-test.png)
 
 程序输出：
 
 ![CatClientTest output](doc/catclienttest-output.png)
 
-3. 在CAT中可以看到测试程序的CAT埋点，如下图。其中的CAT服务器地址、Domain ID应该与client.xml中的配置一致。
+- 在CAT中可以看到测试程序的CAT埋点，如下图。其中的CAT服务器地址、Domain ID应该与client.xml中的配置一致。
 ![CatClientTest Transactions](doc/catclienttest-transactions.png)
 
 ### 在其他应用中引用`Cat.dll`，调用CAT API
-1. 假设我们有一个console应用。
+- 假设我们有一个console应用。
 ![Create New Console Project](doc/new-console-project.png)
 确保工程使用了.NET Framework 4.0或更高版本的服务端Profile，而**_不是Client Profile_**。
 ![Use Server Profile](doc/use-server-profile.png)
-2. 添加对`Cat.dll`的引用
+- 添加对`Cat.dll`的引用
 ![Add Reference](doc/add-reference.png)
-3. 调用CAT API埋点。示例代码：
+- 调用CAT API埋点。示例代码：
 ```
 using System;
 using System.Collections.Generic;
@@ -103,15 +103,15 @@ namespace ConsoleApplication1
     }
 }
 ```
-4. 执行以上`Main()`方法。
-5. 在CAT中可以看到埋点效果：
+- 执行以上`Main()`方法。
+- 在CAT中可以看到埋点效果：
 ![Application Output](doc/console-app-output.png)
 
 ![Application Output Logview](doc/console-app-output-logview.png)
 
 ### 日志输出
-1. 在client.xml中，启用`<logEnabled enabled="true"></logEnabled>` XML元素，以开启日志输出。
-2. 日志输出位于`D:\data\applogs\cat`目录中：
+- 在client.xml中，启用`<logEnabled enabled="true"></logEnabled>` XML元素，以开启日志输出。
+- 日志输出位于`D:\data\applogs\cat`目录中：
 ![Application Log File Path](doc/console-app-log-file-path.png)
 
 ### 为心跳报表获取.NET性能数据
