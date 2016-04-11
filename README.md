@@ -97,7 +97,7 @@ namespace ConsoleApplication1
                 transaction.Complete();
 
                 // 程序退出前睡一会儿。使得CAT客户端有时间发出最后一批消息到网络。
-                Console.Read();
+                Thread.Sleep(1000);
             }
         }
     }
