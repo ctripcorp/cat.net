@@ -129,6 +129,6 @@ namespace ConsoleApplication1
 在您的实现中，对于`IPerformanceMetricProvider`接口中`的Get*()`方法，它应当返回**过去1分钟内**的某个性能指标的累积值（如GC次数），或**过去1分钟内**的平均值（如CPU利用率）。 不推荐它返回从**程序启动至今**的累积值/平均值。请参考`DefaultPerformanceMetricProvider`是如何遵循这一语义的。
 
 通过修改`StatusUpdateTask.cs`，用您的`IPerformanceMetricProvider`实现，来替换掉`DefaultPerformanceMetricProvider`这个默认实现，如下图。
-![Instantiate IPerformance Metric Provider](instantiate-performance-metric-provider.png)
+![Instantiate IPerformance Metric Provider](doc/instantiate-performance-metric-provider.png)
 
 
