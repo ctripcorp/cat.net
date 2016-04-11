@@ -45,6 +45,7 @@ CAT.net客户端要求**.NET Framework 4.0或更高版本**。
 ![Run CatClientTest](doc/run-cat-client-test.png)
 
 程序输出：
+
 ![CatClientTest output](doc/catclienttest-output.png)
 
 3. 在CAT中可以看到测试程序的CAT埋点，如下图。其中的CAT服务器地址、Domain ID应该与client.xml中的配置一致。
@@ -114,3 +115,22 @@ namespace ConsoleApplication1
 1. 在client.xml中，启用`<logEnabled enabled="true"></logEnabled>` XML元素，以开启日志输出。
 2. 日志输出位于`D:\data\applogs\cat`目录中：
 ![Application Log File Path](doc/console-app-log-file-path.png)
+
+### 为心跳报表获取.NET性能数据
+![Heartbeat Report](doc/heartbeat-output.png.png)
+如上图，CAT.net客户端每分钟会自动抓取一次机器级别的性能数据，展现在Heartbeat报表中，包括CPU利用率、GC次数、Heap各代大小、锁竞争次数、锁请求队列大小等。
+
+这些性能指标中的一部分，是通过读取.NET Performance Counter实现的。
+（见DefaultPerformanceMetricProvider.cs中的Initialize()，如下图）。
+![Default Performance Metric Provider](doc/default-performance-metric-provider.png)
+
+然而，读取.NET Performance Counter，需要执行应用所使用的帐号是`Performance Log Users`用户组的成员（参考这里）。特别地，在IIS中以普通账户（`IIS_USRS`）执行的Web应用，是没有这个权限的。
+
+所以，您可能需要提供自己的`IPerformanceMetricProvider`实现，它通过其他有权限读取的数据源（如Zabbix Agent，Salt Agent，或自己实现的一个有更高执行权限的Performance Counter输出程序）来获取这些性能指标。
+	
+在您的实现中，对于`IPerformanceMetricProvider`接口中`的Get*()`方法，它应当返回**过去1分钟内**的某个性能指标的累积值（如GC次数），或**过去1分钟内**的平均值（如CPU利用率）。 不推荐它返回从**程序启动至今**的累积值/平均值。请参考`DefaultPerformanceMetricProvider`是如何遵循这一语义的。
+
+通过修改`StatusUpdateTask.cs`，用您的`IPerformanceMetricProvider`实现，来替换掉`DefaultPerformanceMetricProvider`这个默认实现，如下图。
+![Instantiate IPerformance Metric Provider](instantiate-performance-metric-provider.png)
+
+
