@@ -1,4 +1,4 @@
-# CAT.net客户端 [![Build Status](https://travis-ci.org/unidal/cat.net.png?branch=master)](https://travis-ci.org/unidal/cat.net)
+# CAT.net客户端 [![Build Status](https://travis-ci.org/ctripcorp/cat.net.png?branch=master)](https://travis-ci.org/ctripcorp/cat.net)
 为.net应用提供接入CAT的API。
 
 CAT.net客户端的API设计、客户端配置方式，与[CAT Java客户端](https://github.com/dianping/cat)基本一致。
