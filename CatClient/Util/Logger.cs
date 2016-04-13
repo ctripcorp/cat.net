@@ -69,7 +69,7 @@ namespace Org.Unidal.Cat.Util
                     string message = string.Format(pattern, args);
                     string line = "[" + timestamp + "] [" + severity + "] " + message;
 
-                    StreamWriter writer = GetWriter();
+                    //StreamWriter writer = GetWriter();
                     if (_mWriter != null)
                     {
                         _mWriter.WriteLine(line);
