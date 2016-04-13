@@ -57,9 +57,9 @@ namespace CatClientTest.PerformanceTest
         private static void CreateOneForkedTransaction(int i)
         {
             ITransaction t = Cat.NewTransaction("Iteration", "Iteration" + i);
-            IForkedTransaction forked = Cat.NewForkedTransaction("ForkedTransaction", "ForkedTransaction" + i);
+            //IForkedTransaction forked = Cat.NewForkedTransaction("ForkedTransaction", "ForkedTransaction" + i);
 
-            Thread thread = new Thread(TimedWork.DoWork);
+            //Thread thread = new Thread(TimedWork.DoWork);
             // thread.Start(new Params(forked));
                 
             t.Status = CatConstants.SUCCESS;
