@@ -10,11 +10,9 @@ namespace Org.Unidal.Cat.Util
     {
         private static long baseline = new DateTime(1970, 1, 1, 0, 0, 0).Ticks;
 
-        public static long CurrentTimeMicros()
+        public static long UnixNowMicroSeconds()	
         {
-            //return HighResTicksProvider.GetTickCount () / 10L; // it's microsecond precise
-            // return DateTime.Now.Ticks/10L; // it's millisecond precise
-            return DateTime.Now.Ticks / (TimeSpan.TicksPerMillisecond / 1000); // it's millisecond precise
+            return (DateTime.Now.ToUniversalTime().Ticks - baseline) / (TimeSpan.TicksPerMillisecond / 1000); // it's millisecond precise
         }
 
         public static long UnixNowMilliSeconds()

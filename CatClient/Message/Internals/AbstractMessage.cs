@@ -18,7 +18,7 @@ namespace Org.Unidal.Cat.Message.Internals
         {
             _mType = type;
             _mName = name;
-            TimestampInMicros = MilliSecondTimer.CurrentTimeMicros();
+            TimestampInMicros = MilliSecondTimer.UnixNowMicroSeconds();
         }
 
         /// <summary>

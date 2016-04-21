@@ -101,7 +101,8 @@ namespace Org.Unidal.Cat.Configuration
                         continue;
                     }
 
-                    Server server = new Server(addressAndPort[0], port);
+                    var httpPort = addressAndPort[0] == "127.0.0.1" ? 2281 : 8080;
+                    Server server = new Server(addressAndPort[0], port, httpPort);
                     servers.Add(server);
                 }
             }

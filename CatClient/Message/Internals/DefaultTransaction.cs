@@ -120,7 +120,7 @@ namespace Org.Unidal.Cat.Message.Internals
                 }
                 else
                 {
-                    _mDurationInMicro = MilliSecondTimer.CurrentTimeMicros() - TimestampInMicros;
+                    _mDurationInMicro = MilliSecondTimer.UnixNowMicroSeconds() - TimestampInMicros;
 
                     SetCompleted(true);
 

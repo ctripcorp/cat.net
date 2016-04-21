@@ -1,4 +1,4 @@
-﻿using Org.Unidal.Cat.Message.Internals;
+﻿    using Org.Unidal.Cat.Message.Internals;
 using Org.Unidal.Cat.Util;
 using System;
 using System.Text;
@@ -189,7 +189,6 @@ namespace Org.Unidal.Cat.Message.Spi.Codec
                 if (parent != null)
                 {
                     parent.AddChild(transaction);
-                    tree.EstimatedByteSize += transaction.EstimateByteSize();
                 }
 
                 stack.Push(parent);
@@ -232,7 +231,7 @@ namespace Org.Unidal.Cat.Message.Spi.Codec
                     duration6.Substring(0, duration6.Length - 2),
                     NumberStyles.Integer);
                 parent.DurationInMicros = d8;
-
+                tree.EstimatedByteSize += parent.EstimateByteSize();
                 return stack.Pop();
             }
             Logger.Error("Unknown identifier(" + identifier + ") of message: " + buf);
@@ -544,11 +543,12 @@ namespace Org.Unidal.Cat.Message.Spi.Codec
             //{
             //    return new DateTime(timestamp*10000L).ToString("yyyy-MM-dd HH:mm:ss.fff");
             //}
+            private static readonly long baseline = new DateTime(1970, 1, 1, 0, 0, 0).Ticks;
 
             public String Format2(long timestamp)
             {
                 int year = DateTime.Now.Year;
-                DateTime dt = new DateTime(timestamp * 10000L);
+                DateTime dt = new DateTime(timestamp * 10000L + baseline).ToLocalTime();
                 char[] chars = new char[23];
 
                 chars[0] = (char)((year / 1000) + '0');

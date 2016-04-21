@@ -26,6 +26,7 @@ namespace Org.Unidal.Cat.Message.Spi.Internals
         protected float nAssemblies;
         protected float nClasses;
         protected float totalContentions;
+        private float prevTotalContentions;
         protected float currentQueueLength;
         protected float nPhysicalThreads;
         protected float nExceptions;
@@ -73,7 +74,10 @@ namespace Org.Unidal.Cat.Message.Spi.Internals
             lohHeapSize = lohHeapSizeCounter.NextValue();
             nAssemblies = currentAssembliesCounter.NextValue();
             nClasses = currentClassLoadedCounter.NextValue();
+
+            prevTotalContentions = totalContentions;
             totalContentions = totalContentionsCounter.NextValue();
+
             currentQueueLength = currentQueueLengthCounter.NextValue();
             nPhysicalThreads = physicalThreadsCounter.NextValue();
             
@@ -193,7 +197,7 @@ namespace Org.Unidal.Cat.Message.Spi.Internals
 
         public virtual float GetTotalContentions()
         {
-            return totalContentions;
+            return totalContentions - prevTotalContentions;
         }
 
         public virtual float GetCurrentQueueLength()

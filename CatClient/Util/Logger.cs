@@ -65,7 +65,7 @@ namespace Org.Unidal.Cat.Util
             {
                 try
                 {
-                    string timestamp = new DateTime(MilliSecondTimer.CurrentTimeMicros() * 10L).ToString("yyyy-MM-dd HH:mm:ss.fff");
+                    string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
                     string message = string.Format(pattern, args);
                     string line = "[" + timestamp + "] [" + severity + "] " + message;
 
@@ -89,7 +89,7 @@ namespace Org.Unidal.Cat.Util
 
         private static StreamWriter GetWriter()
         {
-            string path = new DateTime(MilliSecondTimer.CurrentTimeMicros() * 10L).ToString("yyyyMMdd");
+            string path = DateTime.Now.ToString("yyyyMMdd");
             if (!path.Equals(_mLastPath))
             {
                 if (_mWriter != null)
