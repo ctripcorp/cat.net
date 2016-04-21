@@ -91,8 +91,9 @@ namespace Org.Unidal.Cat.Message.Spi.Internals
             _mTaggedTransactions = new LRUCache<string, ITaggedTransaction>(CatConstants.TAGGED_TRANSACTION_CACHE_SIZE);
 
             // start status update task
-            ThreadPool.QueueUserWorkItem(_mStatusUpdateTask.Run);
-
+            Thread statusUpdateTask = new Thread(_mStatusUpdateTask.Run);
+            statusUpdateTask.IsBackground = true;
+            statusUpdateTask.Start();
             Logger.Info("Thread(StatusUpdateTask) started.");
         }
 

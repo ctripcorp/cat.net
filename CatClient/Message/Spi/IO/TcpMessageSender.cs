@@ -439,7 +439,7 @@ namespace Org.Unidal.Cat.Message.Spi.IO
                 // 30 sec
                 const int maxDuration = 1000 * 30;
 
-                if (MilliSecondTimer.CurrentTimeMicros() / 1000 - firstTime > maxDuration 
+                if (MilliSecondTimer.UnixNowMilliSeconds() - firstTime > maxDuration 
                     || trees.Count >= MAX_ATOMIC_MESSAGES 
                     || trees.Count >= _mClientConfig.MaxQueueSize
                     || trees.EstimatedByteSize >= _mClientConfig.MaxQueueByteSize)
